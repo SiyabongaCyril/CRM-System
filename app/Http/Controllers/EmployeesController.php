@@ -12,7 +12,7 @@ class EmployeesController extends Controller
     {
         try{
              // Get employees along with their company information
-            $employees = Employees::with('company')->get();
+            $employees = Employees::with('company')->get()->paginate(10);
             if($employees->isEmpty()) {
                 return redirect()->route('employees.index')->with('error', 'No employees found. There are no employees in the system.');
             }

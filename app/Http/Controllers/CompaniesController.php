@@ -10,7 +10,8 @@ class CompaniesController extends Controller
     public function index()
     {
         try {
-            $companies = Companies::all();
+            //Paginate (10) companies
+            $companies = Companies::paginate(10);
             if ($companies->isEmpty()) {
                 return view('companies.index', ['error' => 'No companies found in the system']);
             }
