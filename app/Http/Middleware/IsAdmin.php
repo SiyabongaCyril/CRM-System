@@ -13,8 +13,13 @@ class IsAdmin
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next): Response
-    {
-        return $next($request);
-    }
+        public function handle(Request $request, Closure $next)
+        {
+            if (auth()->check() && auth()->user()->is_admin) {
+                return $next($request);
+            }
+    
+            return redirect('/'); // Redirect to home or a different page
+        }
+    
 }
