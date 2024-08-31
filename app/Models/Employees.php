@@ -8,4 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class Employees extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'first_name',
+        'last_name',
+        'company_id',
+        'email',
+        'phone',
+    ];
+
+    public function company()
+    {
+        return $this->belongsTo(Companies::class);
+    }
 }
