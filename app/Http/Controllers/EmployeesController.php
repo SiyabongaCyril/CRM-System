@@ -38,8 +38,6 @@ class EmployeesController extends Controller
         } catch (\Exception $e) {
             return redirect()->route('employees.index')->with('error', 'Unable to fetch companies to add employee to.');
         }
-        
-    
        
     }
 
@@ -66,9 +64,21 @@ class EmployeesController extends Controller
        
     }
 
-    public function show(Employees $employee)
+    public function show($id)
     {
-        return view('employees.show', compact('employee'));
+        try{
+            $employee = Employees::find($id);
+
+            if(!$employee) {
+                return redirect()->route('employees.index')->with('error', 'Employee not found.');
+            }
+            
+            return view('employees.show', compact('employee'));
+
+        } catch (\Exception $e) {
+            return redirect()->route('employees.index')->with('error', 'Unable to fetch employee.');
+        }
+
     }
 
     public function edit(Employees $employee)
