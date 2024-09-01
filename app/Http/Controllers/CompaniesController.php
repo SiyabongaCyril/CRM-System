@@ -47,18 +47,34 @@ class CompaniesController extends Controller
         }
     }
 
-    public function show(Companies $Companies)
+    public function show($id)
     {
-            return view('companies.show', compact('Companies'));
+        try{
+            $Company = Companies::find($id);
+            if(!$Company) {
+                return redirect()->route('companies.index')->with('error', 'Company not found');
+            }
+            return view('companies.show', compact('Company'));
+        } catch (\Exception $e) {
+            return redirect()->route('companies.index')->with('error', 'An error occurred while fetching company: ' . $e->getMessage());
+        }
         
     }
 
-    public function edit(Companies $Companies)
+    public function edit($id)
     {
- 
-            return view('companies.edit', compact('Companies'));
+        try{
+            $company = Companies::find($id);
+            if(!$company) {
+                return redirect()->route('companies.index')->with('error', 'Company not found');
+            }
+            return view('companies.edit', compact('company'));
     }
-
+        catch (\Exception $e) {
+            return redirect()->route('companies.index')->with('error', 'An error occurred while fetching company: ' . $e->getMessage());
+        }
+    }
+            
     public function update(Request $request, Companies $Companies)
     {
         try {
