@@ -87,7 +87,7 @@ Follow these steps to set up the project locally:
    OR, if you,re using Yarn
    ```bash
     yarn dev
-  ```
+   ```
    OR, in a production environment
    ```bash
    npm run build
