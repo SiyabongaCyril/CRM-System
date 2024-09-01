@@ -75,7 +75,7 @@ Follow these steps to set up the project locally:
    
    Seed the database with initial administrator(s):
    ```bash
-   php artisan db:seed
+    php artisan db:seed --class=AdminUserSeeder
    ```
 
 8. **Build Frontend Assets**
