@@ -28,7 +28,7 @@ Follow these steps to set up the project locally:
    cd CRM-system
    ```
 
-3. **Install Dependencies**
+2. **Install Dependencies**
 
    Install the PHP dependencies:
    ```bash
@@ -43,7 +43,7 @@ Follow these steps to set up the project locally:
    yarn install
    ```
    
-4. **Set Up Environment File**
+3. **Set Up Environment File**
 
    Copy the .env.example file to .env:
    ```bash
@@ -51,10 +51,17 @@ Follow these steps to set up the project locally:
    ```
    Then update the .env file with your database and other environment configurations.
 
-5. **Generate New Application Key**
+4. **Generate New Application Key**
 
    ```bash
    php artisan key:generate
+   ```
+
+5. **Create a symbolic link**
+
+   create a symbolic link from public/storage to storage/app/public:
+   ```bash
+   php artisan storage:link
    ```
 
 6. **Run Migrations**
@@ -64,14 +71,14 @@ Follow these steps to set up the project locally:
    php artisan migrate
    ```
 
-8. **Seed the database**
+7. **Seed the database**
    
    Seed the database with initial administrator(s):
    ```bash
    php artisan db:seed
    ```
 
-10. **Build Frontend Assets**
+8. **Build Frontend Assets**
 
    This application uses a frontend stack - Blade with Alpine, you'll need to build the frontend assets:
    ```bash
@@ -90,7 +97,7 @@ Follow these steps to set up the project locally:
    yard build
    ``` 
 
-11. **Serve the Application**
+9. **Serve the Application**
 
    ```bash
    php artisan serve
