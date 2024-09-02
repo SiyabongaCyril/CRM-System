@@ -18,7 +18,7 @@ class EmployeesController extends Controller
             }
             return view('employees.index', compact('employees'));
         } catch (\Exception $e) {
-            return redirect()->route('employees.index')->with('error', 'Unable to fetch employees.');
+            return redirect()->back()->with('error', 'Unable to fetch employees.');
 
         }
     }

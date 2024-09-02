@@ -17,7 +17,7 @@ class CompaniesController extends Controller
             }
             return view('companies.index', compact('companies'));
         } catch (\Exception $e) {
-            return view('companies.index', ['error' => 'An error occurred while retrieving companies: ' . $e->getMessage()]);
+            return redirect()->back()->with('error', 'An error occurred while retrieving companies: ' . $e->getMessage());
         }
     }
 
